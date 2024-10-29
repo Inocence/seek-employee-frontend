@@ -9,6 +9,7 @@ const Search = () => {
         backgroundRepeat: 'no-repeat'
     }
 
+    
     return ( 
         <div className="">
             <div className="bg-blue-950 h-48" style={backStyles}></div>
