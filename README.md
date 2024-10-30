@@ -1,3 +1,3 @@
 # seek-employee-frontend
 
-This is an employee-side frontend project modeled after seek.com.au
+This is an employee-side frontend project for a job-seeking application.
