@@ -1,7 +1,9 @@
-import CompanySlides from "../../components/home/CompanySlides";
-import LoginTips from "../../components/home/Login-tips";
-import RecentSearch from "../../components/home/RecentSearch";
+import BottomBanner from "./BottomBanner";
+import CompanySlides from "./CompanySlides";
+import LoginTips from "./Login-tips";
+import RecentSearch from "./RecentSearch";
 import Layout from "../../components/layout/Layout";
+
 
 const Home = () => {
     return (
@@ -10,6 +12,7 @@ const Home = () => {
                 <RecentSearch />
                 <LoginTips />
                 <CompanySlides />
+                <BottomBanner />
             </div>
         </Layout>
     );

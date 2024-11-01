@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Search from "./Search";
-import Toper from "../Toper";
+import Toper from "./Toper";
 
 const Layout = ({ children }) => {
     return (
