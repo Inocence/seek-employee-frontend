@@ -13,7 +13,7 @@ const Header = () => {
                     <a href="" className="border-b-2 border-transparent hover:border-gray-200 py-1">Explore companies</a>
                 </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex hidden md:block items-center space-x-4">
                 <button className="text-blue-800 border-2 border-blue-800 px-3 py-1.5 rounded-md font-medium hover:bg-blue-100">Sign in</button>
                 <a href="" className="font-medium text-blue-800">Employer site</a>
             </div>

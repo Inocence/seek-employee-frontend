@@ -29,7 +29,7 @@ const CompanySlides = () => {
     }
 
     return (
-        <div className='mt-10 flex justify-center'>
+        <div className='flex justify-center mt-20'>
             <div className='w-11/12'>
                 <div className="text-2xl">Find your next employer</div>
                 <div className='mt-3 mb-5'>Explore company profiles to find the right workplace for you. Learn about jobs, reviews, company culture, perks and benefits.</div>
@@ -55,7 +55,7 @@ const CompanySlides = () => {
                         <div className='bg-gray-400 rounded-full w-2 h-2 hover:cursor-pointer'></div>
                     </div>
                 </div>
-                <button className="border-2 border-gray-600 py-2 px-5 rounded-lg text-lg">See more<i className="fa-solid fa-arrow-right ml-2"></i></button>
+                <button className="border-2 border-gray-600 py-2 px-5 rounded-lg text-lg hover:bg-gray-200">See more<i className="fa-solid fa-arrow-right ml-2"></i></button>
             </div>
         </div>
     );

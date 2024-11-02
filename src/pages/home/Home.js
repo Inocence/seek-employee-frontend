@@ -3,6 +3,7 @@ import CompanySlides from "./CompanySlides";
 import LoginTips from "./Login-tips";
 import RecentSearch from "./RecentSearch";
 import Layout from "../../components/layout/Layout";
+import QuikSearch from "./QuikSearch";
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
                 <LoginTips />
                 <CompanySlides />
                 <BottomBanner />
+                <QuikSearch />
             </div>
         </Layout>
     );

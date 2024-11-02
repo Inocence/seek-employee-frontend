@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     return (
         <div>
             <div className="container max-w-full">
-                <Toper />
+                {/* <Toper /> */}
                 <Header />
                 <Search />
                     <main>{children}</main>
