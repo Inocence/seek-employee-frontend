@@ -1,8 +1,7 @@
-import backImage from '../../assets/common/search-bg.svg';
 
 const Search = () => {
     const backStyles = {
-        backgroundImage: `url('${backImage}')`,
+        backgroundImage: `url('/assets/common/search-bg.svg')`,
         width: '100%',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -12,11 +11,10 @@ const Search = () => {
 
 
     return (
-        <div className="">
-            <div className="bg-blue-950 py-5 flex justify-center items-center" style={backStyles}>
-                <div className='w-4/6 text-lg'>
-                    <div className='flex flex-col md:flex-row justify-between items-end'>
-                        <div className='w-full md:w-1/3 pr-4'>
+        <div className="flex text-lg p-4 bg-blue-950 justify-center items-center" style={backStyles}>
+                <div className='text-lg w-full md:w-4/6'>
+                    <div className='flex flex-col space-y-4 md:space-y-0 md:space-x-4  md:flex-row justify-between items-end'>
+                        <div className='w-full'>
                             <span className='text-white font-medium block mb-2'>What</span>
                             <input type="text" placeholder='Enter Keywords' className={searchInput} />
                             {/* <div className='bg-white flex flex-col'>
@@ -26,7 +24,7 @@ const Search = () => {
                                 <a href="">python</a>
                             </div> */}
                         </div>
-                        <div className='w-full md:w-1/3 pr-4'>
+                        <div className='w-full'>
                             <input type="text" placeholder='Any Classification' className={searchInput} />
                             {/* <div className='bg-white'>
                                 <div>
@@ -65,7 +63,7 @@ const Search = () => {
                                 </div>
                             </div> */}
                         </div>
-                        <div className="w-full md:w-1/3 pr-4">
+                        <div className="w-full">
                             <span className='text-white font-medium block mb-2'>Where</span>
                             <input type="text" placeholder='Enter suburb, city, or region' className={searchInput} />
                             {/* <div>
@@ -84,11 +82,9 @@ const Search = () => {
                                 </div>
                             </div> */}
                         </div>
-                        <div>
-                            <button className='py-2 px-8 bg-pink-600 rounded-md text-white border-2 border-pink-600 hover:bg-pink-500 hover:border-pink-500'>SEEK</button>
-                        </div>
+                        <button className='w-full md:w-auto text-center py-2 px-8 bg-pink-600 rounded-md text-white border-2 border-pink-600 hover:bg-pink-500 hover:border-pink-500'>SEEK</button>
                     </div>
-                    <div className='flex justify-between mt-6 text-white'>
+                    <div className='hidden md:flex justify-between mt-6 text-white'>
                         <div className='flex justify-between text-base'>
                             <div>
                                 <button className='border-2 border-white rounded-3xl px-3 py-2'>All work types<i className="fa-solid fa-chevron-down ml-2"></i></button>
@@ -109,7 +105,6 @@ const Search = () => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

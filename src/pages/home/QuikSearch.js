@@ -2,9 +2,9 @@ const QuikSearch = () => {
     const hrefStyle = 'underline underline-offset-4 ml-5';
 
     return (
-        <div className="flex justify-center mt-16">
+        <div className="hidden md:flex justify-center mt-16">
             <div className="w-11/12">
-                <div className="text-lg">Quick search</div>
+                <div className="text-2xl">Quick search</div>
                 <div className="flex space-x-2 mt-3 text-gray-500 text-base">
                     <div className="basis-1/12">Classifications</div>
                     <div className="flex basis-auto">
