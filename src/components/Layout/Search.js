@@ -11,8 +11,8 @@ const Search = () => {
 
 
     return (
-        <div className="flex text-lg p-4 bg-blue-950 justify-center items-center" style={backStyles}>
-                <div className='text-lg w-full md:w-4/6'>
+        <div className="flex text-lg px-3 py-6 m-auto bg-blue-950 justify-center items-center" style={backStyles}>
+                <div className='w-full text-lg md:max-w-4xl'>
                     <div className='flex flex-col space-y-4 md:space-y-0 md:space-x-4  md:flex-row justify-between items-end'>
                         <div className='w-full'>
                             <span className='text-white font-medium block mb-2'>What</span>

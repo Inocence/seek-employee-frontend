@@ -21,11 +21,11 @@ const SingleImageBox = ({ imageId }) => {
 const CompanySlides = () => {
     const imageBoxs1 = [];
     for (let i = 0; i < 5; i++) {
-        imageBoxs1.push(<SingleImageBox imageId={i + 1} />);
+        imageBoxs1.push(<SingleImageBox imageId={i + 1} key={i} />);
     }
     const imageBoxs2 = [];
     for (let i = 5; i < 10; i++) {
-        imageBoxs2.push(<SingleImageBox imageId={i + 1} />);
+        imageBoxs2.push(<SingleImageBox imageId={i + 1} key={i} />);
     }
 
     return (
@@ -43,10 +43,10 @@ const CompanySlides = () => {
                         </div>
                     </div>
                     <div className="bg-white -left-6 top-1/2 transform -translate-y-1/2 border-2 border-gray-200 rounded-full w-12 h-12 absolute flex justify-center items-center hover:cursor-pointer">
-                        <i class="fa-solid fa-chevron-left"></i>
+                        <i className="fa-solid fa-chevron-left"></i>
                     </div>
                     <div className="bg-white -right-6 top-1/2 transform -translate-y-1/2 border-2 border-gray-200 rounded-full w-12 h-12 absolute flex justify-center items-center hover:cursor-pointer">
-                        <i class="fa-solid fa-chevron-right"></i>
+                        <i className="fa-solid fa-chevron-right"></i>
                     </div>
                 </div>
                 <div className='flex justify-center mt-5'>
