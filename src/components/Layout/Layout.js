@@ -1,16 +1,14 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import Search from "./Search";
-import Toper from "./Toper";
+import Search from "./search/Search";
 
 const Layout = ({ children }) => {
     return (
         <div>
             <div className="container max-w-full">
-                {/* <Toper /> */}
                 <Header />
                 <Search />
-                    <main>{children}</main>
+                <main>{children}</main>
                 <Footer />
             </div>
         </div>
