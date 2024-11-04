@@ -1,8 +1,27 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ClearToast from "../common/ClearToast";
 
 const WhatList = ({ searchInput }) => {
     const [isFocus, setIsFocus] = useState(false);
+    const [isMouseOn, setIsMouseOn] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+
+    const handleClear = () => {
+        setInputValue("");
+        setIsMouseOn(false);
+        setIsFocus(false);
+    };
+
+    const handleMouseEnter = () => {
+        setTimeout(() => {
+            setIsMouseOn(true);
+        }, 200);
+    };
+
+    const handleMouseLeave = () => {
+        setIsMouseOn(false);
+    };
 
     const handleFocus = () => {
         setIsFocus(true);
@@ -16,11 +35,26 @@ const WhatList = ({ searchInput }) => {
         <div className='w-full relative'>
             <span className='text-white font-medium block mb-2'>What</span>
             <div className="relative">
-                <input type="text" placeholder='Enter Keywords' className={searchInput} onFocus={handleFocus} onBlur={handleBlur} />
-                <div className={classNames([
-                    "absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1 hover:cursor-pointer hover:bg-gray-200 rounded-full h-8 w-8",
-                    isFocus ? 'flex justify-center items-center' : 'hidden',
-                ])}><i className="fa-solid fa-xmark"></i></div>
+                <input
+                    type="text"
+                    placeholder='Enter Keywords'
+                    className={searchInput}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    onChange={(e) => {
+                        setInputValue(e.target.value);
+                    }}
+                    value={inputValue}
+                />
+                {inputValue && <div
+                    className={classNames([
+                        "absolute flex justify-center items-center right-0 top-1/2 -translate-y-1/2 -translate-x-3 hover:cursor-pointer hover:bg-gray-200 rounded-full h-8 w-8",
+                    ])}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={handleClear}
+                ><i className="fa-solid fa-xmark"></i></div>}
+                {isMouseOn && <ClearToast />}
             </div>
             <div className={classNames([
                 'w-full rounded-md bg-white flex flex-col absolute top-full translate-y-3 left-0 overflow-y-scroll h-48 shadow-md',
