@@ -3,14 +3,12 @@ import { useEffect, useState } from "react";
 import ClearToast from "../common/ClearToast";
 
 const WhatList = ({ searchInput }) => {
-    const [isFocus, setIsFocus] = useState(false);
     const [isMouseOn, setIsMouseOn] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
     const handleClear = () => {
         setInputValue("");
         setIsMouseOn(false);
-        setIsFocus(false);
     };
 
     const handleMouseEnter = () => {
@@ -23,14 +21,6 @@ const WhatList = ({ searchInput }) => {
         setIsMouseOn(false);
     };
 
-    const handleFocus = () => {
-        setIsFocus(true);
-    };
-
-    const handleBlur = () => {
-        setIsFocus(false);
-    };
-
     return (
         <div className='w-full relative'>
             <span className='text-white font-medium block mb-2'>What</span>
@@ -39,8 +29,6 @@ const WhatList = ({ searchInput }) => {
                     type="text"
                     placeholder='Enter Keywords'
                     className={searchInput}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
                     onChange={(e) => {
                         setInputValue(e.target.value);
                     }}
@@ -56,9 +44,8 @@ const WhatList = ({ searchInput }) => {
                 ><i className="fa-solid fa-xmark"></i></div>}
                 {isMouseOn && <ClearToast />}
             </div>
-            <div className={classNames([
+            {inputValue && <div className={classNames([
                 'w-full rounded-md bg-white flex flex-col absolute top-full translate-y-3 left-0 overflow-y-scroll h-48 shadow-md',
-                isFocus ? 'block' : 'hidden',
             ])}>
                 <div className="flex flex-col">
                     <a href="" className="p-3 text-lg hover:bg-blue-100">php</a>
@@ -66,7 +53,7 @@ const WhatList = ({ searchInput }) => {
                     <a href="" className="p-3 text-lg hover:bg-blue-100">java</a>
                     <a href="" className="p-3 text-lg hover:bg-blue-100">python</a>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };
