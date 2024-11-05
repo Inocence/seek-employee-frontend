@@ -7,7 +7,6 @@ const WhatList = ({ searchInput}) => {
     const [inputValue, setInputValue] = useState("");
     const [isFirst, setIsFirst] = useState(false);
     const outRef = useRef(null);
-    const inputRef = useRef(null);
 
     useEffect(() => {
         if(!isFirst && inputValue) {
@@ -61,7 +60,6 @@ const WhatList = ({ searchInput}) => {
                     className={searchInput}
                     onChange={e => handleInput(e.target.value)}
                     value={inputValue}
-                    ref={inputRef}
                 />
                 {inputValue && <div
                     className={classNames([

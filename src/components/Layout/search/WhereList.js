@@ -7,7 +7,6 @@ const WhereList = ({ searchInput }) => {
     const [inputValue, setInputValue] = useState("");
     const [isFocus, setIsFocus] = useState(false);
     const outRef = useRef(null);
-    const inputRef = useRef(null);
 
     const handleFocus = () => {
         setIsFocus(true);
@@ -63,7 +62,6 @@ const WhereList = ({ searchInput }) => {
                     className={searchInput}
                     onChange={e => handleInput(e.target.value)}
                     value={inputValue}
-                    ref={inputRef}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />

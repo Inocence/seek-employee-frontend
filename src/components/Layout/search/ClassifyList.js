@@ -1,29 +1,58 @@
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import ClearToast from "../../common/ClearToast";
+
+const CheckRow = ({ handleCheckbox = () => { }, catetory, total, isCheck=false }) => {
+    return (
+        <div className="flex flex-row justify-between p-3">
+            <div className="flex flex-row items-center">
+                <input
+                    type="checkbox"
+                    value={catetory}
+                    className="w-5 h-5"
+                    onChange={e => handleCheckbox(e.target.value, isCheck)}
+                    checked={isCheck}
+                />
+                <span className="px-3">{catetory}</span>
+            </div>
+            <div>{total}</div>
+        </div>
+    );
+};
 
 const ClassifyList = ({ searchInput }) => {
-    const [isMouseOn, setIsMouseOn] = useState(false);
+    const [isFocus, setIsFocus] = useState(false);
+    const [isCheck, setIsCheck] = useState(false);
     const [inputValue, setInputValue] = useState("");
-    const [isFirst, setIsFirst] = useState(false);
+    const [fullCate, setFullCate] = useState([]);
     const outRef = useRef(null);
-    const inputRef = useRef(null);
 
-    useEffect(() => {
-        if (!isFirst && inputValue) {
-            setIsFirst(true);
-            handleScrollTop();
-            document.body.style.overflow = 'hidden';
+    const handleCheckbox = (value, isCheck) => {
+        if(isCheck) {
+            setFullCate([...fullCate, value]);
         }
-        return () => {
-            document.body.style.overflow = 'auto';
+    }
+
+    const handleInput = (value, isCheck) => {
+        const new_value = isCheck ? "" : value;
+        setInputValue(new_value);
+        setIsCheck(!isCheck);
+        if(!new_value) {
+            setFullCate([]);
+        } else {
+            setFullCate([value]);
         }
-    }, [inputValue]);
+    }
+
+    const handleFoucs = () => {
+        setIsFocus(true);
+        handleScrollTop();
+        document.body.style.overflow = 'hidden';
+    }
 
     const handleClear = () => {
-        setIsFirst(false);
+        setIsFocus(false);
         setInputValue("");
-        setIsMouseOn(false);
+        document.body.style.overflow = 'auto';
     };
 
     const handleScrollTop = () => {
@@ -33,29 +62,16 @@ const ClassifyList = ({ searchInput }) => {
         })
     }
 
-    const handleInput = (value) => {
-        setInputValue(value);
-    }
-
-
-    const handleMouseEnter = () => {
-        setIsMouseOn(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsMouseOn(false);
-    };
-
     return (
         <div
             className={classNames([
                 'w-full relative',
-                isFirst ? 'z-50' : '',
+                isFocus ? 'z-50' : '',
             ])}
             ref={outRef}
         >
-            {isFirst && <div className="fixed inset-0 bg-black bg-opacity-50"></div>}
-            <div className="relative">
+            {isFocus && <div className="fixed inset-0 bg-black bg-opacity-50" onClick={handleClear}></div>}
+            <div className="relative hover:cursor-pointer">
                 <input
                     type="text"
                     readOnly
@@ -64,57 +80,38 @@ const ClassifyList = ({ searchInput }) => {
                         searchInput,
                         "hover:cursor-pointer"
                     ])}
-                    onChange={e => handleInput(e.target.value)}
-                    value={inputValue}
-                    ref={inputRef}
+                    onFocus={handleFoucs}
                 />
+                <div
+                    className={classNames([
+                        "absolute flex justify-center items-center top-1/2 -translate-y-1/2 -translate-x-3 rounded-full h-8 w-8",
+                        isCheck ? "right-8" : "right-0",
+                    ])}>
+                    <i className={classNames([
+                        "fa-solid fa-chevron-down duration-300",
+                        isFocus ? "rotate-180" : "",
+                    ])}></i>
+                </div>
                 {inputValue && <div
                     className={classNames([
                         "absolute flex justify-center items-center right-0 top-1/2 -translate-y-1/2 -translate-x-3 hover:cursor-pointer hover:bg-gray-200 rounded-full h-8 w-8",
                     ])}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
                     onClick={handleClear}
                 ><i className="fa-solid fa-xmark"></i></div>}
-                {isMouseOn && <ClearToast />}
             </div>
-            {inputValue && <div className={classNames([
-                'w-full rounded-md bg-white flex flex-col absolute top-full translate-y-3 left-0 overflow-y-scroll h-48 shadow-md',
+            {isFocus && <div className={classNames([
+                'w-full rounded-md bg-white flex flex-col absolute top-full translate-y-3 left-0 overflow-y-scroll h-64 shadow-md',
             ])}>
                 <div className={classNames([
-                    "flex flex-col",
+                    "flex flex-col p-3",
                 ])}>
                     <div>
-                        <div>
+                        <CheckRow handleCheckbox={handleInput} isCheck={isCheck} catetory={"Information"} total={6095} />
+                        <div className="pl-6">
+                            <CheckRow handleCheckbox={handleInput} isCheck={isCheck} catetory={"All information"} total={6095} />
                             <div>
-                                <input type="checkbox" value="accounting" />
-                                <span>Accounting</span>
-                            </div>
-                            <div>6095</div>
-                        </div>
-                        <div>
-                            <div>
-                                <div>
-                                    <input type="checkbox" value="accounting" />
-                                    <span>All Accounting</span>
-                                </div>
-                                <div>6095</div>
-                            </div>
-                            <div>
-                                <div>
-                                    <div>
-                                        <input type="checkbox" value="accounting" />
-                                        <span>All Accounting</span>
-                                    </div>
-                                    <div>615</div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <input type="checkbox" value="accounting" />
-                                        <span>All Accounting</span>
-                                    </div>
-                                    <div>235</div>
-                                </div>
+                                <CheckRow handleCheckbox={handleCheckbox} catetory={"Computer operators"} total={418} />
+                                <CheckRow handleCheckbox={handleCheckbox} catetory={"Developters"} total={203} />
                             </div>
                         </div>
                     </div>
